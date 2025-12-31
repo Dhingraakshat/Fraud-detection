@@ -40,6 +40,204 @@ This approach improves generalization and captures different fraud patterns that
 
 ---
 
+📊 Dataset
+📦 IEEE-CIS Fraud Detection Dataset
+
+Transaction-level tabular data
+
+Anonymized numerical & categorical features
+
+Strong temporal dependency
+
+Severe class imbalance
+
+⚠️ Dataset files are not included and must be placed under:
+Dataset/IEEE_CIS/
+
+⚙️ Preprocessing Pipeline
+🕒 1. Real-Time Train / Validation Split
+
+📓 01_preprocessing_real_time_split.ipynb
+
+Time-based splitting
+
+Prevents future information leakage
+
+Mimics real-world production behavior
+
+🏷️ 2. CatBoost-Optimized Dataset
+
+📓 01b_preprocessing_catboost_dataset.ipynb
+
+Preserves categorical features
+
+Optimized for CatBoost’s native handling
+
+🤖 Base Models
+
+All base models use:
+
+🔁 Out-of-Fold (OOF) predictions
+
+🎯 Optuna hyperparameter optimization
+
+🔍 SHAP explainability
+
+🌲 LightGBM
+
+📓 02_lightgbm_base_model_oof_optuna_shap.ipynb
+
+Gradient boosting for tabular data
+
+Strong baseline with fast training
+
+🌐 Isolation Forest
+
+📓 03_isolation_forest_base_model_oof_optuna_shap.ipynb
+
+Unsupervised anomaly detection
+
+Captures rare and abnormal behavior
+
+🧠 Autoencoder
+
+📓 04_autoencoder_base_model_oof_optuna_shap_v2.ipynb
+
+Neural network for anomaly detection
+
+Learns compressed representations of normal transactions
+
+🐱 CatBoost
+
+📓 05_catboost_base_model_oof_optuna_shap_fast.ipynb
+
+Native categorical feature handling
+
+Minimal preprocessing with strong performance
+
+🧩 Meta Learner — Stacking Ensemble
+🚀 XGBoost Meta-Model
+
+📓 06_xgb_meta_learner_optuna_shap_with_cat.ipynb
+
+Trained on OOF predictions from all base models
+
+Learns optimal combination of model outputs
+
+Optuna-tuned hyperparameters
+
+SHAP used to explain ensemble decisions
+
+🔥 This stage delivers the largest performance improvement.
+
+📈 Evaluation Strategy
+
+Accuracy is misleading for fraud detection.
+
+Metrics used:
+
+📊 ROC-AUC
+
+📉 PR-AUC
+
+🎯 Recall (Fraud Capture Rate)
+
+📌 Precision
+
+🏆 Recall@Top-K
+
+⚖️ Threshold tuning based on business cost
+
+🔍 Explainability (SHAP)
+
+SHAP is applied to:
+
+Base models
+
+Meta learner
+
+Provides:
+
+🌍 Global feature importance
+
+🔎 Local transaction-level explanations
+
+🧾 Audit-ready decision tracing
+
+▶️ Recommended Execution Order
+
+1️⃣ 01_preprocessing_real_time_split.ipynb
+2️⃣ 01b_preprocessing_catboost_dataset.ipynb
+
+3️⃣ Base Models
+
+02_lightgbm_base_model_oof_optuna_shap.ipynb
+
+03_isolation_forest_base_model_oof_optuna_shap.ipynb
+
+04_autoencoder_base_model_oof_optuna_shap_v2.ipynb
+
+05_catboost_base_model_oof_optuna_shap_fast.ipynb
+
+4️⃣ Meta Learner
+
+06_xgb_meta_learner_optuna_shap_with_cat.ipynb
+
+🛑 Data Leakage Prevention
+
+Strict safeguards against:
+
+Using future transactions
+
+Cross-time contamination
+
+Post-event feature leakage
+
+✔ All splits occur before modeling
+
+🧰 Tech Stack
+
+Python
+
+Pandas / NumPy
+
+Scikit-learn
+
+LightGBM
+
+CatBoost
+
+XGBoost
+
+Optuna
+
+SHAP
+
+Jupyter Notebook
+
+🗺️ Future Enhancements
+
+🔄 Modular pipeline refactor
+
+📐 Probability calibration
+
+📡 Feature & prediction drift detection
+
+🌐 Real-time inference API
+
+📄 Model cards for compliance
+
+📜 License
+
+Licensed under the MIT License
+See LICENSE for details.
+
+👤 Author
+
+Aksha
+Fraud Detection & Machine Learning
+GitHub: https://github.com/
+<your-username
 ## 🗂️ Repository Structure
 
 ```text
