@@ -234,10 +234,10 @@ See LICENSE for details.
 
 👤 Author
 
-Aksha
+Akshat
 Fraud Detection & Machine Learning
-GitHub: https://github.com/
-<your-username
+GitHub: https://github.com/Dhingraakshat
+
 ## 🗂️ Repository Structure
 
 ```text
