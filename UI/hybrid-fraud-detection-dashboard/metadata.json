@@ -1,0 +1,5 @@
+{
+  "name": "Hybrid Fraud Detection Dashboard",
+  "description": "A high-fidelity academic research dashboard for hybrid fraud detection models using stacking and interpretable feature engineering.",
+  "requestFramePermissions": []
+}
